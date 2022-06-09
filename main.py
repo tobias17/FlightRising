@@ -54,9 +54,11 @@ def main():
 
     driver.get('https://flightrising.com/main.php?p=scrying&view=progeny')
     sleep(2.0)
-    
-    cookie_button = driver.find_element(by=By.ID, value='qc-cmp2-container').find_element(by=By.CLASS_NAME, value='css-ygmynb')
-    cookie_button.click()
+
+    banners = driver.find_elements(by=By.ID, value='qc-cmp2-container')
+    if len(banners) > 0:
+        cookie_button = banners[0].find_element(by=By.CLASS_NAME, value='css-ygmynb')
+        cookie_button.click()
 
     left_input_box = driver.find_element(by=By.ID, value='id10t1')
     right_input_box = driver.find_element(by=By.ID, value='id10t2')
@@ -93,3 +95,4 @@ def main():
 
 if '__main__' in __name__:
     main()
+
